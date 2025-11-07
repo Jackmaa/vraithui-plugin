@@ -1,0 +1,38 @@
+{
+  "name": "vraithui",
+  "version": "0.2.0",
+  "description": "A minimal, themeable Tailwind plugin inspired by daisyUI (semantic tokens, components, themes).",
+  "type": "module",
+  "main": "src/plugin.js",
+  "exports": {
+    ".": "./src/plugin.js"
+  },
+  "keywords": [
+    "tailwindcss",
+    "plugin",
+    "ui",
+    "components",
+    "theme",
+    "daisyui-like",
+    "design-system"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwindcss": ">=3.3.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "release:check": "node -e \"console.log('Ready to publish v' + require('./package.json').version)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/vraithui"
+  },
+  "bugs": {
+    "url": "https://github.com/yourname/vraithui/issues"
+  },
+  "homepage": "https://github.com/yourname/vraithui#readme",
+  "author": "Valentin (Vraith)"
+}
