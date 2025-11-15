@@ -1,5 +1,31 @@
 export const semanticUtilities = {
-  /* ========== BACKGROUND COLORS ========== */
+  /* ========== PRIMARY & SECONDARY ========== */
+  ".bg-primary": {
+    "--tw-bg-opacity": "1",
+    backgroundColor: "rgb(var(--p) / var(--tw-bg-opacity))",
+  },
+  ".text-primary": {
+    "--tw-text-opacity": "1",
+    color: "rgb(var(--p) / var(--tw-text-opacity))",
+  },
+  ".border-primary": {
+    "--tw-border-opacity": "1",
+    borderColor: "rgb(var(--p) / var(--tw-border-opacity))",
+  },
+  ".bg-secondary": {
+    "--tw-bg-opacity": "1",
+    backgroundColor: "rgb(var(--s) / var(--tw-bg-opacity))",
+  },
+  ".text-secondary": {
+    "--tw-text-opacity": "1",
+    color: "rgb(var(--s) / var(--tw-text-opacity))",
+  },
+  ".border-secondary": {
+    "--tw-border-opacity": "1",
+    borderColor: "rgb(var(--s) / var(--tw-border-opacity))",
+  },
+
+  /* ========== SEMANTIC COLORS ========== */
   ".bg-info": {
     "--tw-bg-opacity": "1",
     backgroundColor: "rgb(var(--in) / var(--tw-bg-opacity))",
@@ -99,5 +125,25 @@ export const semanticUtilities = {
   },
   ".bg-panel-2": {
     backgroundColor: "rgb(var(--panel-2))",
+  },
+
+  /* ========== EFFECTS ========== */
+  ".shadow-soft": {
+    boxShadow: "0 1px 2px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.08)",
+  },
+  ".glass": {
+    backgroundColor: "rgb(255 255 255 / 0.08)",
+    backdropFilter: "saturate(180%) blur(10px)",
+    border: "1px solid rgb(255 255 255 / 0.12)",
+  },
+  ".glass-strong": {
+    backgroundColor: "rgb(255 255 255 / 0.12)",
+    backdropFilter: "saturate(200%) blur(16px)",
+    border: "1px solid rgb(255 255 255 / 0.18)",
+  },
+  ".glass-subtle": {
+    backgroundColor: "rgb(255 255 255 / 0.05)",
+    backdropFilter: "saturate(160%) blur(8px)",
+    border: "1px solid rgb(255 255 255 / 0.08)",
   },
 };

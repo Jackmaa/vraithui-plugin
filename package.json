@@ -4,8 +4,16 @@
   "description": "A minimal, themeable Tailwind plugin inspired by daisyUI (semantic tokens, components, themes).",
   "type": "module",
   "main": "src/plugin.js",
+  "types": "index.d.ts",
   "exports": {
-    ".": "./src/plugin.js"
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./src/plugin.js"
+    },
+    "./runtime": {
+      "types": "./src/runtime.d.ts",
+      "default": "./src/runtime.js"
+    }
   },
   "keywords": [
     "tailwindcss",
@@ -24,7 +32,9 @@
     "tailwindcss": "^3.4.17"
   },
   "scripts": {
-    "release:check": "node -e \"console.log('Ready to publish v' + require('./package.json').version)\""
+    "release:check": "node -e \"console.log('Ready to publish v' + require('./package.json').version)\"",
+    "showcase:build": "cd showcase && npx tailwindcss -i assets/css/input.css -o assets/css/vraithui-demo.css --minify",
+    "showcase:watch": "cd showcase && npx tailwindcss -i assets/css/input.css -o assets/css/vraithui-demo.css --watch"
   },
   "repository": {
     "type": "git",

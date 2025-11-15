@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import { themes } from "./themes.js";
+import { semanticUtilities } from "./semanticUtilities.js";
 import button from "./components/button.js";
 import card from "./components/card.js";
 import badge from "./components/badge.js";
@@ -47,6 +48,9 @@ import backdrop from "./components/backdrop.js";
 import rangeInput from "./components/rangeInput.js";
 import tabsVertical from "./components/tabsVertical.js";
 import notification from "./components/notification.js";
+import kbd from "./components/kbd.js";
+import fab from "./components/fab.js";
+import sheet from "./components/sheet.js";
 export default plugin(function ({ addBase, addComponents, addUtilities }) {
   // 1) base variables + themes
   addBase(themes);
@@ -98,139 +102,12 @@ export default plugin(function ({ addBase, addComponents, addUtilities }) {
   addComponents(rangeInput());
   addComponents(tabsVertical());
   addComponents(notification());
+  addComponents(kbd());
+  addComponents(fab());
+  addComponents(sheet());
 
-  // 3) built-in utilities
-  addUtilities({
-    ".bg-primary": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--p) / var(--tw-bg-opacity))",
-    },
-    ".text-primary": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--p) / var(--tw-text-opacity))",
-    },
-    ".border-primary": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--p) / var(--tw-border-opacity))",
-    },
-    ".bg-secondary": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--s) / var(--tw-bg-opacity))",
-    },
-    ".text-secondary": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--s) / var(--tw-text-opacity))",
-    },
-    ".border-secondary": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--s) / var(--tw-border-opacity))",
-    },
-
-    /* ========== SEMANTIC COLORS (NEW) ========== */
-    // Info
-    ".bg-info": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--in) / var(--tw-bg-opacity))",
-    },
-    ".bg-info-light": {
-      backgroundColor: "rgb(var(--in) / 0.12)",
-    },
-    ".text-info": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--in) / var(--tw-text-opacity))",
-    },
-    ".border-info": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--in) / var(--tw-border-opacity))",
-    },
-
-    // Success
-    ".bg-success": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--su) / var(--tw-bg-opacity))",
-    },
-    ".bg-success-light": {
-      backgroundColor: "rgb(var(--su) / 0.12)",
-    },
-    ".text-success": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--su) / var(--tw-text-opacity))",
-    },
-    ".border-success": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--su) / var(--tw-border-opacity))",
-    },
-
-    // Warning
-    ".bg-warning": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--wa) / var(--tw-bg-opacity))",
-    },
-    ".bg-warning-light": {
-      backgroundColor: "rgb(var(--wa) / 0.12)",
-    },
-    ".text-warning": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--wa) / var(--tw-text-opacity))",
-    },
-    ".border-warning": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--wa) / var(--tw-border-opacity))",
-    },
-
-    // Error
-    ".bg-error": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--er) / var(--tw-bg-opacity))",
-    },
-    ".bg-error-light": {
-      backgroundColor: "rgb(var(--er) / 0.12)",
-    },
-    ".text-error": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--er) / var(--tw-text-opacity))",
-    },
-    ".border-error": {
-      "--tw-border-opacity": "1",
-      borderColor: "rgb(var(--er) / var(--tw-border-opacity))",
-    },
-
-    /* ========== PANEL/ACCENT COLORS (NEW) ========== */
-    ".bg-accent": {
-      "--tw-bg-opacity": "1",
-      backgroundColor: "rgb(var(--accent) / var(--tw-bg-opacity))",
-    },
-    ".text-accent": {
-      "--tw-text-opacity": "1",
-      color: "rgb(var(--accent) / var(--tw-text-opacity))",
-    },
-    ".bg-panel": {
-      backgroundColor: "rgb(var(--panel))",
-    },
-    ".bg-panel-2": {
-      backgroundColor: "rgb(var(--panel-2))",
-    },
-
-    /* ========== EFFECTS ========== */
-    ".shadow-soft": {
-      boxShadow: "0 1px 2px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.08)",
-    },
-    ".glass": {
-      backgroundColor: "rgb(255 255 255 / 0.08)",
-      backdropFilter: "saturate(180%) blur(10px)",
-      border: "1px solid rgb(255 255 255 / 0.12)",
-    },
-    ".glass-strong": {
-      backgroundColor: "rgb(255 255 255 / 0.12)",
-      backdropFilter: "saturate(200%) blur(16px)",
-      border: "1px solid rgb(255 255 255 / 0.18)",
-    },
-    ".glass-subtle": {
-      backgroundColor: "rgb(255 255 255 / 0.05)",
-      backdropFilter: "saturate(160%) blur(8px)",
-      border: "1px solid rgb(255 255 255 / 0.08)",
-    },
-  });
+  // 3) semantic utilities (colors, effects)
+  addUtilities(semanticUtilities);
 
   // 4) extended utilities (animations, effects, etc.)
   addUtilities(utilities());

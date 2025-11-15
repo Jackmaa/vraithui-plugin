@@ -41,19 +41,5 @@ export default function modalComponent() {
       marginTop: "1rem",
     },
     ".modal-close": { position: "absolute", top: ".5rem", right: ".5rem" },
-    // Modal — overlay dynamique
-    ".modal::before": {
-      content: '""',
-      position: "absolute",
-      inset: "0",
-      backgroundColor: "rgb(0 0 0 / var(--overlay, 0.5))",
-      backdropFilter: "blur(2px)",
-    },
-    // Focus ring — alpha piloté par thème
-    "&:focus-visible": {
-      outline: "2px solid transparent",
-      outlineOffset: "2px",
-      boxShadow: "0 0 0 calc(3px) rgb(var(--p) / var(--focus-alpha, 0.35))",
-    },
   };
 }
