@@ -1,11 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-import vraithui from '../src/plugin.js';
+const plugin = require('tailwindcss/plugin');
 
-export default {
+// Inline minimal VraithUI config for showcase
+module.exports = {
   content: [
     "./index.html",
     "./docs/**/*.html",
     "./examples/**/*.html",
   ],
-  plugins: [vraithui],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    // We'll use the parent plugin by referencing it
+    require('../src/plugin.js').default
+  ],
 }

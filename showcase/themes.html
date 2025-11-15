@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Themes - VraithUI</title>
+  <link rel="stylesheet" href="assets/css/vraithui-demo.css" />
+  <style>
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .theme-card {
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    .theme-card.active {
+      border-color: rgb(var(--p));
+      box-shadow: 0 0 0 4px rgb(var(--p) / 0.2);
+    }
+    .theme-preview {
+      padding: 1.5rem;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .theme-colors {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .color-swatch {
+      aspect-ratio: 1;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .active-indicator {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+      background: rgb(var(--su));
+      border-radius: 9999px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+    .theme-card.active .active-indicator {
+      display: flex;
+    }
+    .component-preview {
+      background: rgb(var(--bg));
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      border: 1px solid rgb(var(--fg) / 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header style="background: rgb(var(--bg)); border-bottom: 1px solid rgb(var(--fg) / 0.1); padding: 1.5rem 0; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgb(var(--bg) / 0.8);">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <a href="index.html" style="text-decoration: none;">
+          <h1 style="font-size: 1.5rem; font-weight: 700;">
+            <span style="background: linear-gradient(135deg, rgb(var(--p)), rgb(var(--s))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+              VraithUI
+            </span>
+          </h1>
+        </a>
+        <nav style="display: flex; gap: 1.5rem;">
+          <a href="docs.html" class="link">Docs</a>
+          <a href="themes.html" class="link link-primary" style="font-weight: 600;">Themes</a>
+          <a href="examples/dashboard.html" class="link">Examples</a>
+        </nav>
+      </div>
+      <div style="display: flex; gap: 0.75rem; align-items: center;">
+        <a href="https://github.com/yourname/vraithui" target="_blank" class="btn btn-ghost btn-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0 2rem; background: linear-gradient(135deg, rgb(var(--p) / 0.1), rgb(var(--s) / 0.1));">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem;">
+          Choose Your
+          <span style="background: linear-gradient(135deg, rgb(var(--p)), rgb(var(--s))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Perfect Theme
+          </span>
+        </h1>
+        <p style="font-size: 1.25rem; color: rgb(var(--fg) / 0.7); margin-bottom: 2rem;">
+          16 beautifully crafted themes to match your brand and style. Switch instantly with a single attribute.
+        </p>
+        <div class="alert alert-info" style="display: inline-flex; text-align: left;">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <strong>Live Preview:</strong> Click on any theme card below to preview it in real-time!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Themes Grid -->
+  <section style="padding: 3rem 0;">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+      <div class="theme-grid" id="themesGrid">
+        <!-- Themes will be dynamically generated here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Component Preview -->
+  <section style="padding: 3rem 0;">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Component Preview</h2>
+      <p style="color: rgb(var(--fg) / 0.7); margin-bottom: 2rem;">
+        See how components look in the selected theme
+      </p>
+
+      <div class="component-preview">
+        <div style="display: grid; gap: 2rem;">
+          <!-- Buttons -->
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Buttons</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <button class="btn btn-primary">Primary</button>
+              <button class="btn btn-secondary">Secondary</button>
+              <button class="btn btn-success">Success</button>
+              <button class="btn btn-error">Error</button>
+              <button class="btn btn-warning">Warning</button>
+              <button class="btn btn-info">Info</button>
+              <button class="btn btn-ghost">Ghost</button>
+            </div>
+          </div>
+
+          <!-- Cards -->
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Cards</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Default Card</h4>
+                  <p class="card-subtitle">A simple card example</p>
+                  <p>This is the card content area with some example text.</p>
+                  <div class="card-actions">
+                    <button class="btn btn-primary btn-sm">Action</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-bordered">
+                <div class="card-body">
+                  <h4 class="card-title">Bordered Card</h4>
+                  <p class="card-subtitle">With visible border</p>
+                  <p>This card has a border applied to it.</p>
+                  <div class="card-actions">
+                    <button class="btn btn-secondary btn-sm">Action</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badges & Alerts -->
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Badges & Alerts</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+              <span class="badge badge-primary">Primary</span>
+              <span class="badge badge-secondary">Secondary</span>
+              <span class="badge badge-success">Success</span>
+              <span class="badge badge-error">Error</span>
+              <span class="badge badge-warning">Warning</span>
+              <span class="badge badge-info">Info</span>
+            </div>
+            <div class="alert alert-success">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>This is a success alert message!</span>
+            </div>
+          </div>
+
+          <!-- Form Elements -->
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Forms</h3>
+            <div style="display: grid; gap: 1rem; max-width: 500px;">
+              <div class="form-group">
+                <label class="form-label">Input Field</label>
+                <input type="text" class="input" placeholder="Enter text..." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Select Field</label>
+                <select class="select">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Textarea</label>
+                <textarea class="textarea" placeholder="Enter message..." rows="3"></textarea>
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="checkbox" checked />
+                  Checkbox option
+                </label>
+                <label class="radio-label">
+                  <input type="radio" class="radio" name="radio-demo" checked />
+                  Radio option
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Guide -->
+  <section style="padding: 3rem 0; background: rgb(var(--bg-secondary));">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">How to Use Themes</h2>
+      <div style="display: grid; gap: 1.5rem; max-width: 800px;">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">1. Set Theme via HTML Attribute</h3>
+            <p style="margin-bottom: 1rem;">Add the <code style="background: rgb(var(--fg) / 0.1); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-family: monospace;">data-theme</code> attribute to your HTML element:</p>
+            <pre style="background: rgb(var(--fg) / 0.05); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-family: monospace; font-size: 0.875rem;"><code>&lt;html data-theme="cyberpunk"&gt;
+  &lt;!-- Your content --&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">2. Switch Themes with JavaScript</h3>
+            <p style="margin-bottom: 1rem;">Use the VraithUI runtime to change themes dynamically:</p>
+            <pre style="background: rgb(var(--fg) / 0.05); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-family: monospace; font-size: 0.875rem;"><code>import { VraithUI } from 'vraithui/runtime';
+
+// Set a specific theme
+VraithUI.theme.set('dark');
+
+// Toggle between themes
+VraithUI.theme.toggle(['default', 'dark']);
+
+// Get current theme
+const currentTheme = VraithUI.theme.get();</code></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">3. Create a Theme Switcher</h3>
+            <p style="margin-bottom: 1rem;">Build a dropdown or button group for theme selection:</p>
+            <pre style="background: rgb(var(--fg) / 0.05); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-family: monospace; font-size: 0.875rem;"><code>&lt;select class="select" onchange="VraithUI.theme.set(this.value)"&gt;
+  &lt;option value="default"&gt;Default&lt;/option&gt;
+  &lt;option value="dark"&gt;Dark&lt;/option&gt;
+  &lt;option value="cyberpunk"&gt;Cyberpunk&lt;/option&gt;
+  &lt;!-- More themes... --&gt;
+&lt;/select&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import { VraithUI } from './assets/js/runtime.js';
+
+    const themes = [
+      { name: 'default', title: 'Default', description: 'Clean and minimal default theme', colors: ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'] },
+      { name: 'dark', title: 'Dark', description: 'Sleek dark mode for low-light environments', colors: ['#60a5fa', '#a78bfa', '#34d399', '#fbbf24'] },
+      { name: 'cyberpunk', title: 'Cyberpunk', description: 'Neon-infused futuristic aesthetic', colors: ['#ff00ff', '#00ffff', '#ff6ec7', '#00ff9f'] },
+      { name: 'luxury', title: 'Luxury', description: 'Elegant gold and deep purple palette', colors: ['#9333ea', '#fbbf24', '#7c3aed', '#f59e0b'] },
+      { name: 'forest', title: 'Forest', description: 'Natural greens inspired by nature', colors: ['#10b981', '#059669', '#34d399', '#6ee7b7'] },
+      { name: 'ocean', title: 'Ocean', description: 'Deep blues like the ocean depths', colors: ['#0ea5e9', '#0284c7', '#38bdf8', '#7dd3fc'] },
+      { name: 'sunset', title: 'Sunset', description: 'Warm oranges and purples of dusk', colors: ['#f97316', '#ea580c', '#fb923c', '#fdba74'] },
+      { name: 'cherry', title: 'Cherry', description: 'Bold reds with pink accents', colors: ['#ef4444', '#dc2626', '#f87171', '#fca5a5'] },
+      { name: 'mint', title: 'Mint', description: 'Fresh mint green and teal', colors: ['#14b8a6', '#0d9488', '#2dd4bf', '#5eead4'] },
+      { name: 'lavender', title: 'Lavender', description: 'Soft purple with pink undertones', colors: ['#a855f7', '#9333ea', '#c084fc', '#d8b4fe'] },
+      { name: 'amber', title: 'Amber', description: 'Warm amber and golden tones', colors: ['#f59e0b', '#d97706', '#fbbf24', '#fcd34d'] },
+      { name: 'emerald', title: 'Emerald', description: 'Rich emerald green palette', colors: ['#10b981', '#059669', '#34d399', '#6ee7b7'] },
+      { name: 'rose', title: 'Rose', description: 'Romantic rose and pink shades', colors: ['#f43f5e', '#e11d48', '#fb7185', '#fda4af'] },
+      { name: 'slate', title: 'Slate', description: 'Professional gray and blue-gray', colors: ['#64748b', '#475569', '#94a3b8', '#cbd5e1'] },
+      { name: 'brand', title: 'Brand', description: 'VraithUI signature brand colors', colors: ['#6366f1', '#8b5cf6', '#818cf8', '#a78bfa'] },
+      { name: 'retro', title: 'Retro', description: 'Vintage browns and warm tones', colors: ['#d97706', '#92400e', '#f59e0b', '#fbbf24'] }
+    ];
+
+    const currentTheme = VraithUI.theme.get();
+
+    function createThemeCard(theme) {
+      const isActive = theme.name === currentTheme;
+      return `
+        <div class="card theme-card ${isActive ? 'active' : ''}" data-theme-name="${theme.name}">
+          <div class="theme-preview" data-theme="${theme.name}">
+            <div class="active-indicator">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: rgb(var(--p));">${theme.title}</h3>
+            <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.7); flex: 1;">${theme.description}</p>
+            <div class="theme-colors">
+              ${theme.colors.map(color => `<div class="color-swatch" style="background: ${color};"></div>`).join('')}
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+              <button class="btn btn-primary btn-sm" style="flex: 1;">Primary</button>
+              <button class="btn btn-secondary btn-sm" style="flex: 1;">Secondary</button>
+            </div>
+          </div>
+          <div class="card-body" style="border-top: 1px solid rgb(var(--fg) / 0.1); padding: 0.75rem 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <code style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6); font-family: monospace;">data-theme="${theme.name}"</code>
+              <span class="badge badge-sm" style="font-size: 0.625rem;">${isActive ? 'Active' : 'Click to preview'}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render theme cards
+    const themesGrid = document.getElementById('themesGrid');
+    themesGrid.innerHTML = themes.map(theme => createThemeCard(theme)).join('');
+
+    // Add click handlers
+    document.querySelectorAll('.theme-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const themeName = card.dataset.themeName;
+        VraithUI.theme.set(themeName);
+
+        // Update active states
+        document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        // Show toast
+        VraithUI.toast.success(`Switched to ${themeName} theme`);
+      });
+    });
+  </script>
+</body>
+</html>

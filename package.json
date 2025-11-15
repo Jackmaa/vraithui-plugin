@@ -34,7 +34,8 @@
   "scripts": {
     "release:check": "node -e \"console.log('Ready to publish v' + require('./package.json').version)\"",
     "showcase:build": "cd showcase && npx tailwindcss -i assets/css/input.css -o assets/css/vraithui-demo.css --minify",
-    "showcase:watch": "cd showcase && npx tailwindcss -i assets/css/input.css -o assets/css/vraithui-demo.css --watch"
+    "showcase:watch": "cd showcase && npx tailwindcss -i assets/css/input.css -o assets/css/vraithui-demo.css --watch",
+    "showcase:serve": "npx serve showcase -p 3000"
   },
   "repository": {
     "type": "git",

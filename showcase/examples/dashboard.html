@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Example - VraithUI</title>
+  <link rel="stylesheet" href="../assets/css/vraithui-demo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .stat-card { transition: all 0.3s ease; }
+    .stat-card:hover { transform: translateY(-4px); }
+  </style>
+</head>
+<body class="bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-sticky backdrop-blur-lg bg-[rgb(var(--bg))]/80 border-b border-[rgb(var(--border))]">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="navbar-start flex items-center gap-8">
+        <a href="../index.html" class="navbar-brand text-2xl font-bold bg-gradient-to-r from-[rgb(var(--p))] to-[rgb(var(--s))] bg-clip-text text-transparent">
+          VraithUI Dashboard
+        </a>
+        <div class="hidden md:flex gap-6">
+          <a href="#" class="text-[rgb(var(--p))] font-semibold">Dashboard</a>
+          <a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Analytics</a>
+          <a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Reports</a>
+          <a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Settings</a>
+        </div>
+      </div>
+      <div class="navbar-end flex items-center gap-4">
+        <button id="themeToggle" class="btn btn-ghost btn-icon">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <div class="relative">
+          <button class="btn btn-ghost btn-icon">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            <span class="absolute top-0 right-0 w-2 h-2 bg-[rgb(var(--er))] rounded-full"></span>
+          </button>
+        </div>
+        <div class="avatar">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[rgb(var(--p))] to-[rgb(var(--s))] flex items-center justify-center text-white font-bold">
+            JD
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-4 py-8">
+    <!-- Welcome Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">Welcome back, John!</h1>
+      <p class="text-[rgb(var(--fg))]/70">Here's what's happening with your projects today.</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Stat Card 1 -->
+      <div class="card stat-card p-6 border-l-4 border-[rgb(var(--p))]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgb(var(--p))]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <span class="text-xs text-[rgb(var(--su))] font-bold">+12%</span>
+        </div>
+        <div class="text-2xl font-bold mb-1">2,543</div>
+        <div class="text-sm text-[rgb(var(--fg))]/60">Total Users</div>
+      </div>
+
+      <!-- Stat Card 2 -->
+      <div class="card stat-card p-6 border-l-4 border-[rgb(var(--su))]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgb(var(--su))]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <span class="text-xs text-[rgb(var(--su))] font-bold">+23%</span>
+        </div>
+        <div class="text-2xl font-bold mb-1">$45,231</div>
+        <div class="text-sm text-[rgb(var(--fg))]/60">Revenue</div>
+      </div>
+
+      <!-- Stat Card 3 -->
+      <div class="card stat-card p-6 border-l-4 border-[rgb(var(--wa))]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgb(var(--wa))]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <span class="text-xs text-[rgb(var(--wa))] font-bold">+8</span>
+        </div>
+        <div class="text-2xl font-bold mb-1">124</div>
+        <div class="text-sm text-[rgb(var(--fg))]/60">Active Projects</div>
+      </div>
+
+      <!-- Stat Card 4 -->
+      <div class="card stat-card p-6 border-l-4 border-[rgb(var(--in))]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgb(var(--in))]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <span class="text-xs text-[rgb(var(--in))] font-bold">94%</span>
+        </div>
+        <div class="text-2xl font-bold mb-1">89.5%</div>
+        <div class="text-sm text-[rgb(var(--fg))]/60">Completion Rate</div>
+      </div>
+    </div>
+
+    <!-- Charts and Activity -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-8">
+      <!-- Recent Activity -->
+      <div class="lg:col-span-2 card p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold">Recent Activity</h2>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-primary">Day</button>
+            <button class="btn btn-sm btn-outline">Week</button>
+            <button class="btn btn-sm btn-outline">Month</button>
+          </div>
+        </div>
+
+        <!-- Activity Chart Placeholder -->
+        <div class="h-64 bg-[rgb(var(--panel))] rounded-lg flex items-center justify-center mb-4">
+          <div class="text-center">
+            <svg class="w-16 h-16 mx-auto mb-2 text-[rgb(var(--fg))]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <p class="text-[rgb(var(--fg))]/50">Chart visualization would go here</p>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="text-center p-4 bg-[rgb(var(--panel))] rounded-lg">
+            <div class="text-2xl font-bold text-[rgb(var(--p))]">1,234</div>
+            <div class="text-xs text-[rgb(var(--fg))]/60">Visitors</div>
+          </div>
+          <div class="text-center p-4 bg-[rgb(var(--panel))] rounded-lg">
+            <div class="text-2xl font-bold text-[rgb(var(--su))]">567</div>
+            <div class="text-xs text-[rgb(var(--fg))]/60">Conversions</div>
+          </div>
+          <div class="text-center p-4 bg-[rgb(var(--panel))] rounded-lg">
+            <div class="text-2xl font-bold text-[rgb(var(--in))]">45.9%</div>
+            <div class="text-xs text-[rgb(var(--fg))]/60">Bounce Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks -->
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold">Tasks</h2>
+          <button class="btn btn-sm btn-ghost">View All</button>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <input type="checkbox" class="mt-1" checked>
+            <div class="flex-1">
+              <div class="font-medium">Design new landing page</div>
+              <div class="text-xs text-[rgb(var(--fg))]/60 mt-1">Due today</div>
+            </div>
+            <span class="badge bg-[rgb(var(--p))]/20 text-[rgb(var(--p))]">High</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input type="checkbox" class="mt-1">
+            <div class="flex-1">
+              <div class="font-medium">Review pull requests</div>
+              <div class="text-xs text-[rgb(var(--fg))]/60 mt-1">Due tomorrow</div>
+            </div>
+            <span class="badge bg-[rgb(var(--wa))]/20 text-[rgb(var(--wa))]">Medium</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input type="checkbox" class="mt-1">
+            <div class="flex-1">
+              <div class="font-medium">Update documentation</div>
+              <div class="text-xs text-[rgb(var(--fg))]/60 mt-1">Due in 3 days</div>
+            </div>
+            <span class="badge bg-[rgb(var(--in))]/20 text-[rgb(var(--in))]">Low</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input type="checkbox" class="mt-1" checked>
+            <div class="flex-1">
+              <div class="font-medium">Fix critical bugs</div>
+              <div class="text-xs text-[rgb(var(--fg))]/60 mt-1">Completed</div>
+            </div>
+            <span class="badge bg-[rgb(var(--er))]/20 text-[rgb(var(--er))]">Critical</span>
+          </div>
+        </div>
+
+        <button class="btn btn-block btn-outline mt-6">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Add New Task
+        </button>
+      </div>
+    </div>
+
+    <!-- Recent Projects -->
+    <div class="card p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold">Recent Projects</h2>
+        <button class="btn btn-primary">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          New Project
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th class="text-left">Project Name</th>
+              <th class="text-left">Client</th>
+              <th class="text-left">Status</th>
+              <th class="text-left">Progress</th>
+              <th class="text-left">Due Date</th>
+              <th class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Website Redesign</td>
+              <td>Acme Corp</td>
+              <td><span class="badge bg-[rgb(var(--su))]/20 text-[rgb(var(--su))]">In Progress</span></td>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar bg-[rgb(var(--su))]" style="width: 75%"></div>
+                </div>
+              </td>
+              <td>Dec 15, 2024</td>
+              <td class="text-right">
+                <button class="btn btn-sm btn-ghost">View</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-medium">Mobile App</td>
+              <td>Tech Start</td>
+              <td><span class="badge bg-[rgb(var(--wa))]/20 text-[rgb(var(--wa))]">Review</span></td>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar bg-[rgb(var(--wa))]" style="width: 90%"></div>
+                </div>
+              </td>
+              <td>Dec 20, 2024</td>
+              <td class="text-right">
+                <button class="btn btn-sm btn-ghost">View</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-medium">Brand Identity</td>
+              <td>Creative Co</td>
+              <td><span class="badge bg-[rgb(var(--in))]/20 text-[rgb(var(--in))]">Planning</span></td>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar bg-[rgb(var(--in))]" style="width: 25%"></div>
+                </div>
+              </td>
+              <td>Jan 10, 2025</td>
+              <td class="text-right">
+                <button class="btn btn-sm btn-ghost">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab fab-bottom-right" onclick="alert('Quick action!')">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { VraithUI } from '../assets/js/runtime.js';
+
+    // Theme switcher
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      VraithUI.theme.toggle(['dark', 'default', 'luxury', 'cyberpunk']);
+    });
+  </script>
+</body>
+</html>

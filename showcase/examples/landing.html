@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="brand">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Example - VraithUI</title>
+  <link rel="stylesheet" href="../assets/css/vraithui-demo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-sticky backdrop-blur-lg bg-[rgb(var(--bg))]/90 border-b border-[rgb(var(--border))]">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="navbar-start flex items-center gap-8">
+        <a href="#" class="navbar-brand text-2xl font-bold">
+          <span class="bg-gradient-to-r from-[rgb(var(--p))] to-[rgb(var(--s))] bg-clip-text text-transparent">Acme</span>
+        </a>
+        <div class="hidden md:flex gap-6">
+          <a href="#features" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Features</a>
+          <a href="#pricing" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Pricing</a>
+          <a href="#testimonials" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Testimonials</a>
+          <a href="#contact" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))] transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="navbar-end flex items-center gap-4">
+        <a href="#" class="btn btn-ghost">Sign In</a>
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 md:py-32">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-[rgb(var(--p))]/20 to-[rgb(var(--s))]/20"></div>
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgb(var(--fg) / 0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--p))]/10 border border-[rgb(var(--p))]/20 mb-8">
+          <span class="w-2 h-2 rounded-full bg-[rgb(var(--p))] animate-pulse"></span>
+          <span class="text-sm font-medium text-[rgb(var(--p))]">New: AI-Powered Analytics</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+          The Modern Way to
+          <span class="block bg-gradient-to-r from-[rgb(var(--p))] to-[rgb(var(--s))] bg-clip-text text-transparent">
+            Grow Your Business
+          </span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-[rgb(var(--fg))]/70 mb-12 max-w-2xl mx-auto">
+          Powerful tools and insights to help you scale faster, work smarter, and achieve more with less effort.
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center mb-12">
+          <a href="#" class="btn btn-primary btn-lg group">
+            Start Free Trial
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="#" class="btn btn-outline btn-lg">
+            Watch Demo
+          </a>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="flex items-center justify-center gap-8 text-sm text-[rgb(var(--fg))]/60">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span>4.9/5 from 1000+ reviews</span>
+          </div>
+          <span>•</span>
+          <div>10,000+ teams use our platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-[rgb(var(--panel))]/30">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Everything you need to succeed</h2>
+        <p class="text-xl text-[rgb(var(--fg))]/70">Powerful features to help you work smarter</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--p))] to-[rgb(var(--s))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
+          <p class="text-[rgb(var(--fg))]/70">Optimized performance for instant results</p>
+        </div>
+
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--s))] to-[rgb(var(--accent))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Secure by Default</h3>
+          <p class="text-[rgb(var(--fg))]/70">Enterprise-grade security built-in</p>
+        </div>
+
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--accent))] to-[rgb(var(--p))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Advanced Analytics</h3>
+          <p class="text-[rgb(var(--fg))]/70">Deep insights into your data</p>
+        </div>
+
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--in))] to-[rgb(var(--su))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Mobile Ready</h3>
+          <p class="text-[rgb(var(--fg))]/70">Works perfectly on all devices</p>
+        </div>
+
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--su))] to-[rgb(var(--wa))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
+          <p class="text-[rgb(var(--fg))]/70">Work together seamlessly</p>
+        </div>
+
+        <div class="card card-hover p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgb(var(--wa))] to-[rgb(var(--er))] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">24/7 Support</h3>
+          <p class="text-[rgb(var(--fg))]/70">We're here to help anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Simple, transparent pricing</h2>
+        <p class="text-xl text-[rgb(var(--fg))]/70">Choose the plan that's right for you</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Starter Plan -->
+        <div class="card p-8">
+          <h3 class="text-2xl font-bold mb-2">Starter</h3>
+          <div class="text-4xl font-bold mb-6">
+            $29<span class="text-lg text-[rgb(var(--fg))]/60 font-normal">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Up to 10 team members</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>5GB storage</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Basic analytics</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Email support</span>
+            </li>
+          </ul>
+          <button class="btn btn-outline btn-block">Get Started</button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="card card-bordered border-[rgb(var(--p))] p-8 relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+            <span class="badge bg-[rgb(var(--p))] text-white px-4 py-1">Most Popular</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Pro</h3>
+          <div class="text-4xl font-bold mb-6">
+            $99<span class="text-lg text-[rgb(var(--fg))]/60 font-normal">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Up to 50 team members</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>100GB storage</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Advanced analytics</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Priority support</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>API access</span>
+            </li>
+          </ul>
+          <button class="btn btn-primary btn-block">Get Started</button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="card p-8">
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <div class="text-4xl font-bold mb-6">
+            Custom<span class="text-lg text-[rgb(var(--fg))]/60 font-normal"></span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited team members</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited storage</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Custom analytics</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>24/7 phone support</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Custom integrations</span>
+            </li>
+          </ul>
+          <button class="btn btn-outline btn-block">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 bg-[rgb(var(--panel))]/30">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Loved by teams worldwide</h2>
+        <p class="text-xl text-[rgb(var(--fg))]/70">See what our customers have to say</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="card p-6">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-[rgb(var(--fg))]/80 mb-4">"This platform has completely transformed how we work. The features are exactly what we needed!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[rgb(var(--p))] to-[rgb(var(--s))] flex items-center justify-center text-white font-bold">
+              SR
+            </div>
+            <div>
+              <div class="font-semibold">Sarah Richards</div>
+              <div class="text-sm text-[rgb(var(--fg))]/60">CEO, TechStart</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-[rgb(var(--fg))]/80 mb-4">"Amazing product! The customer support is exceptional and the features are powerful yet easy to use."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[rgb(var(--in))] to-[rgb(var(--su))] flex items-center justify-center text-white font-bold">
+              MJ
+            </div>
+            <div>
+              <div class="font-semibold">Michael Johnson</div>
+              <div class="text-sm text-[rgb(var(--fg))]/60">CTO, DataFlow</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-[rgb(var(--fg))]/80 mb-4">"Best investment we've made. Our productivity has increased by 300% since switching to this platform."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[rgb(var(--su))] to-[rgb(var(--wa))] flex items-center justify-center text-white font-bold">
+              EC
+            </div>
+            <div>
+              <div class="font-semibold">Emily Chen</div>
+              <div class="text-sm text-[rgb(var(--fg))]/60">Product Manager, InnovateCo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-[rgb(var(--p))]/20 to-[rgb(var(--s))]/20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to get started?</h2>
+        <p class="text-xl text-[rgb(var(--fg))]/70 mb-8">
+          Join thousands of teams already using our platform to achieve their goals.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#" class="btn btn-primary btn-lg">
+            Start Free Trial
+          </a>
+          <a href="#" class="btn btn-outline btn-lg">
+            Schedule Demo
+          </a>
+        </div>
+        <p class="text-sm text-[rgb(var(--fg))]/60 mt-6">
+          No credit card required • 14-day free trial • Cancel anytime
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[rgb(var(--border))] py-12 bg-[rgb(var(--panel))]/30">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="font-bold text-lg mb-4 bg-gradient-to-r from-[rgb(var(--p))] to-[rgb(var(--s))] bg-clip-text text-transparent">Acme</h3>
+          <p class="text-sm text-[rgb(var(--fg))]/70">Building the future of work, one product at a time.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Features</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Pricing</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Security</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">About</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Blog</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Careers</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Legal</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Privacy</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">Terms</a></li>
+            <li><a href="#" class="text-[rgb(var(--fg))]/70 hover:text-[rgb(var(--p))]">License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-[rgb(var(--border))] pt-8 text-center text-sm text-[rgb(var(--fg))]/60">
+        <p>&copy; 2024 Acme. All rights reserved. Built with VraithUI.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple scroll reveal animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.card').forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
