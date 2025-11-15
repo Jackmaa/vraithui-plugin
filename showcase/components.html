@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components - VraithUI</title>
+  <link rel="stylesheet" href="assets/css/vraithui-demo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .component-card {
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .component-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      border-color: rgb(var(--p) / 0.3);
+    }
+
+    .component-preview {
+      background: linear-gradient(135deg, rgb(var(--panel) / 0.3), rgb(var(--bg-secondary) / 0.3));
+      border-radius: 0.75rem;
+      padding: 2rem;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .component-preview::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgb(var(--p) / 0.05), rgb(var(--s) / 0.05));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .component-card:hover .component-preview::before {
+      opacity: 1;
+    }
+
+    .category-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 2px solid rgb(var(--border));
+      background: rgb(var(--bg));
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .filter-chip:hover {
+      border-color: rgb(var(--p));
+      background: rgb(var(--p) / 0.1);
+      color: rgb(var(--p));
+    }
+
+    .filter-chip.active {
+      border-color: rgb(var(--p));
+      background: rgb(var(--p));
+      color: white;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 400px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgb(var(--fg) / 0.4);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgb(0 0 0 / 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .component-modal {
+      background: rgb(var(--bg));
+      border-radius: 1rem;
+      max-width: 900px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      border: 1px solid rgb(var(--border));
+    }
+
+    .demo-section {
+      background: rgb(var(--panel) / 0.3);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgb(var(--border));
+    }
+
+    .code-block {
+      background: rgb(var(--bg-secondary));
+      border-radius: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      border: 1px solid rgb(var(--border));
+    }
+  </style>
+</head>
+<body class="bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-sticky navbar-shadow" style="padding-left: 1rem; padding-right: 1rem;">
+    <div class="navbar-start">
+      <a href="index.html" class="navbar-brand" style="font-size: 1.5rem; background: linear-gradient(135deg, rgb(var(--p)), rgb(var(--s))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        VraithUI
+      </a>
+    </div>
+
+    <div class="navbar-center">
+      <div class="navbar-links">
+        <a href="components.html" class="navbar-link" style="color: rgb(var(--p)); font-weight: 600;">Components</a>
+        <a href="themes.html" class="navbar-link">Themes</a>
+        <a href="docs.html" class="navbar-link">Docs</a>
+        <div class="dropdown">
+          <button class="navbar-link" style="background: none; border: none; cursor: pointer;">
+            Examples
+            <svg style="width: 1rem; height: 1rem; display: inline-block; vertical-align: middle; margin-left: 0.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="examples/dashboard.html" class="dropdown-item">Dashboard</a>
+            <a href="examples/admin.html" class="dropdown-item">Admin Panel</a>
+            <a href="examples/landing.html" class="dropdown-item">Landing Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <a href="index.html" class="btn btn-ghost btn-icon" aria-label="Back to Home">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      </a>
+      <button id="themeToggle" class="btn btn-ghost btn-icon" aria-label="Toggle theme">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+      <a href="https://github.com/Jackmaa/vraithui-plugin" class="btn btn-ghost btn-icon" aria-label="GitHub">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.430.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20" style="background: linear-gradient(135deg, rgb(var(--p) / 0.1), rgb(var(--s) / 0.1));">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+          Discover Our
+          <span class="block bg-gradient-to-r from-[rgb(var(--p))] to-[rgb(var(--s))] bg-clip-text text-transparent">
+            51 Components
+          </span>
+        </h1>
+        <p class="text-xl text-[rgb(var(--fg))]/70 mb-8 max-w-2xl mx-auto">
+          Beautiful, accessible, and fully customizable components for your next project
+        </p>
+
+        <!-- Search -->
+        <div class="search-box mx-auto mb-8">
+          <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            id="searchInput"
+            class="input w-full pl-12"
+            placeholder="Search components..."
+            style="font-size: 1rem;">
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-3 justify-center" id="filterChips">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="buttons">Buttons</button>
+          <button class="filter-chip" data-filter="forms">Forms</button>
+          <button class="filter-chip" data-filter="navigation">Navigation</button>
+          <button class="filter-chip" data-filter="data">Data Display</button>
+          <button class="filter-chip" data-filter="feedback">Feedback</button>
+          <button class="filter-chip" data-filter="overlays">Overlays</button>
+          <button class="filter-chip" data-filter="inputs">Advanced Inputs</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Grid -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="component-grid" id="componentsGrid">
+
+        <!-- Button Component Card -->
+        <div class="card component-card" data-category="buttons" data-name="button">
+          <div class="component-preview">
+            <div class="flex flex-wrap gap-3 items-center justify-center">
+              <button class="btn btn-primary">Primary</button>
+              <button class="btn btn-secondary">Secondary</button>
+              <button class="btn btn-ghost">Ghost</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Button</h3>
+                <p class="card-subtitle">Interactive action triggers</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Component -->
+        <div class="card component-card" data-category="data" data-name="card">
+          <div class="component-preview">
+            <div class="card max-w-xs">
+              <div class="card-body">
+                <h4 class="card-title text-sm">Card Example</h4>
+                <p class="text-xs">Flexible content container</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Card</h3>
+                <p class="card-subtitle">Versatile content container</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Component -->
+        <div class="card component-card" data-category="forms" data-name="input">
+          <div class="component-preview">
+            <input type="text" class="input max-w-xs" placeholder="Enter text...">
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Input</h3>
+                <p class="card-subtitle">Text input with validation</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badge Component -->
+        <div class="card component-card" data-category="data" data-name="badge">
+          <div class="component-preview">
+            <div class="flex flex-wrap gap-2">
+              <span class="badge badge-primary">Primary</span>
+              <span class="badge badge-success">Success</span>
+              <span class="badge badge-error">Error</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Badge</h3>
+                <p class="card-subtitle">Status indicators</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Component -->
+        <div class="card component-card" data-category="feedback" data-name="alert">
+          <div class="component-preview">
+            <div class="alert alert-success max-w-xs">
+              <span>✓</span>
+              <span class="text-sm">Success alert</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Alert</h3>
+                <p class="card-subtitle">Contextual feedback</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Component -->
+        <div class="card component-card" data-category="overlays" data-name="modal">
+          <div class="component-preview">
+            <button class="btn btn-primary btn-sm">Open Modal</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Modal</h3>
+                <p class="card-subtitle">Dialog overlay</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navbar Component -->
+        <div class="card component-card" data-category="navigation" data-name="navbar">
+          <div class="component-preview">
+            <div class="navbar bg-[rgb(var(--panel))] rounded-lg" style="padding: 0.5rem 1rem; max-width: 280px;">
+              <div class="navbar-brand text-sm font-bold">Brand</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Navbar</h3>
+                <p class="card-subtitle">Top navigation bar</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--accent))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--accent))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs Component -->
+        <div class="card component-card" data-category="navigation" data-name="tabs">
+          <div class="component-preview">
+            <div class="tabs">
+              <button class="tab tab-active text-sm">Tab 1</button>
+              <button class="tab text-sm">Tab 2</button>
+              <button class="tab text-sm">Tab 3</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Tabs</h3>
+                <p class="card-subtitle">Tabbed navigation</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Component -->
+        <div class="card component-card" data-category="feedback" data-name="progress">
+          <div class="component-preview">
+            <div class="progress max-w-xs">
+              <div class="progress-bar bg-[rgb(var(--p))]" style="width: 60%"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Progress</h3>
+                <p class="card-subtitle">Progress indicator</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Component -->
+        <div class="card component-card" data-category="data" data-name="table">
+          <div class="component-preview">
+            <table class="table text-xs" style="font-size: 0.75rem;">
+              <thead><tr><th>Name</th><th>Role</th></tr></thead>
+              <tbody><tr><td>John</td><td>Admin</td></tr></tbody>
+            </table>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Table</h3>
+                <p class="card-subtitle">Data tables</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--accent))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--accent))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown Component -->
+        <div class="card component-card" data-category="overlays" data-name="dropdown">
+          <div class="component-preview">
+            <button class="btn btn-outline btn-sm">Menu ▾</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Dropdown</h3>
+                <p class="card-subtitle">Dropdown menus</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar Component -->
+        <div class="card component-card" data-category="data" data-name="avatar">
+          <div class="component-preview">
+            <div class="avatar">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[rgb(var(--p))] to-[rgb(var(--s))] flex items-center justify-center text-white font-bold text-sm">
+                JD
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Avatar</h3>
+                <p class="card-subtitle">User avatars</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breadcrumb Component -->
+        <div class="card component-card" data-category="navigation" data-name="breadcrumb">
+          <div class="component-preview">
+            <nav class="breadcrumb text-xs">
+              <a href="#" class="breadcrumb-item">Home</a>
+              <a href="#" class="breadcrumb-item">Products</a>
+              <span class="breadcrumb-item breadcrumb-item-active">Details</span>
+            </nav>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Breadcrumb</h3>
+                <p class="card-subtitle">Navigation breadcrumbs</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Component -->
+        <div class="card component-card" data-category="data" data-name="accordion">
+          <div class="component-preview">
+            <div class="accordion" style="max-width: 250px;">
+              <div class="accordion-item accordion-item-open">
+                <button class="accordion-header text-xs">
+                  <span>Item 1</span>
+                  <svg class="accordion-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="accordion-content text-xs">
+                  <p>Content here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Accordion</h3>
+                <p class="card-subtitle">Collapsible panels</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Component -->
+        <div class="card component-card" data-category="inputs" data-name="slider">
+          <div class="component-preview">
+            <input type="range" class="slider" min="0" max="100" value="50" style="max-width: 200px;">
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Slider</h3>
+                <p class="card-subtitle">Range input slider</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tooltip Component -->
+        <div class="card component-card" data-category="overlays" data-name="tooltip">
+          <div class="component-preview">
+            <button class="btn btn-secondary btn-sm">Hover me</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Tooltip</h3>
+                <p class="card-subtitle">Hover information</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--accent))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--accent))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton Component -->
+        <div class="card component-card" data-category="feedback" data-name="skeleton">
+          <div class="component-preview">
+            <div class="space-y-2" style="max-width: 200px;">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text" style="width: 80%;"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Skeleton</h3>
+                <p class="card-subtitle">Loading placeholders</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Component -->
+        <div class="card component-card" data-category="navigation" data-name="pagination">
+          <div class="component-preview">
+            <div class="pagination">
+              <button class="btn btn-ghost btn-sm text-xs">‹</button>
+              <button class="btn btn-primary btn-sm text-xs">1</button>
+              <button class="btn btn-ghost btn-sm text-xs">2</button>
+              <button class="btn btn-ghost btn-sm text-xs">›</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Pagination</h3>
+                <p class="card-subtitle">Page navigation</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAB Component -->
+        <div class="card component-card" data-category="buttons" data-name="fab">
+          <div class="component-preview">
+            <button class="fab" style="position: static; margin: 0;">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">FAB</h3>
+                <p class="card-subtitle">Floating action button</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kbd Component -->
+        <div class="card component-card" data-category="data" data-name="kbd">
+          <div class="component-preview">
+            <div class="flex gap-2">
+              <kbd class="kbd text-xs">Ctrl</kbd>
+              <span>+</span>
+              <kbd class="kbd text-xs">K</kbd>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Keyboard</h3>
+                <p class="card-subtitle">Keyboard shortcuts</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--er))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--er))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More component cards can be added following the same pattern -->
+        <!-- For brevity, I'll add a few more key ones -->
+
+        <!-- Checkbox & Radio -->
+        <div class="card component-card" data-category="forms" data-name="checkbox">
+          <div class="component-preview">
+            <div class="flex flex-col gap-2">
+              <label class="checkbox-label flex items-center gap-2 text-xs">
+                <input type="checkbox" class="checkbox" checked>
+                <span>Checkbox</span>
+              </label>
+              <label class="radio-label flex items-center gap-2 text-xs">
+                <input type="radio" class="radio" checked>
+                <span>Radio</span>
+              </label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Checkbox & Radio</h3>
+                <p class="card-subtitle">Selection inputs</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Complete Navbar with Burger -->
+        <div class="card component-card" data-category="navigation" data-name="navbar-complete">
+          <div class="component-preview">
+            <div class="navbar bg-[rgb(var(--panel))] rounded-lg" style="max-width: 100%;">
+              <div class="navbar-start">
+                <button class="btn btn-ghost btn-icon md:hidden">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+                <span class="navbar-brand text-sm font-bold">Brand</span>
+                <div class="hidden md:flex gap-4 ml-4">
+                  <a href="#" class="text-xs">Home</a>
+                  <a href="#" class="text-xs">About</a>
+                </div>
+              </div>
+              <div class="navbar-end">
+                <button class="btn btn-primary btn-sm text-xs">Login</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Navbar Complete</h3>
+                <p class="card-subtitle">Full navbar with burger menu</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select -->
+        <div class="card component-card" data-category="forms" data-name="select">
+          <div class="component-preview">
+            <select class="select" style="max-width: 200px;">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Select</h3>
+                <p class="card-subtitle">Dropdown select input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="card component-card" data-category="forms" data-name="textarea">
+          <div class="component-preview">
+            <textarea class="textarea" rows="3" placeholder="Enter text..." style="max-width: 250px; font-size: 0.75rem;"></textarea>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Textarea</h3>
+                <p class="card-subtitle">Multi-line text input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="card component-card" data-category="navigation" data-name="steps">
+          <div class="component-preview">
+            <div class="steps" style="max-width: 280px; font-size: 0.75rem;">
+              <div class="step step-complete">
+                <div class="step-circle" style="width: 1.5rem; height: 1.5rem; font-size: 0.7rem;">1</div>
+                <div class="step-label" style="font-size: 0.7rem;">Account</div>
+              </div>
+              <div class="step step-active">
+                <div class="step-circle" style="width: 1.5rem; height: 1.5rem; font-size: 0.7rem;">2</div>
+                <div class="step-label" style="font-size: 0.7rem;">Profile</div>
+              </div>
+              <div class="step">
+                <div class="step-circle" style="width: 1.5rem; height: 1.5rem; font-size: 0.7rem;">3</div>
+                <div class="step-label" style="font-size: 0.7rem;">Done</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Steps</h3>
+                <p class="card-subtitle">Step progress indicator</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="card component-card" data-category="navigation" data-name="menu">
+          <div class="component-preview">
+            <div class="menu" style="max-width: 220px;">
+              <div class="menu-item menu-item-active">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-xs">Home</span>
+              </div>
+              <div class="menu-item">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span class="text-xs">Settings</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Menu</h3>
+                <p class="card-subtitle">Vertical menu with icons</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="card component-card" data-category="data" data-name="timeline">
+          <div class="component-preview">
+            <div class="timeline" style="max-width: 250px;">
+              <div class="timeline-item timeline-item-complete">
+                <div class="timeline-marker" style="width: 0.75rem; height: 0.75rem;"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-xs">Started</h4>
+                  <p class="text-xs text-[rgb(var(--fg))]/60">Jan 2024</p>
+                </div>
+              </div>
+              <div class="timeline-item timeline-item-active">
+                <div class="timeline-marker" style="width: 0.75rem; height: 0.75rem;"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-xs">In Progress</h4>
+                  <p class="text-xs text-[rgb(var(--fg))]/60">Feb 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Timeline</h3>
+                <p class="card-subtitle">Event timeline</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="card component-card" data-category="data" data-name="stats">
+          <div class="component-preview">
+            <div class="stats" style="font-size: 0.75rem;">
+              <div class="stat">
+                <div class="stat-label" style="font-size: 0.65rem;">Users</div>
+                <div class="stat-value" style="font-size: 1.25rem;">2.5K</div>
+                <div class="stat-trend stat-trend-up" style="font-size: 0.65rem;">+12%</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label" style="font-size: 0.65rem;">Revenue</div>
+                <div class="stat-value" style="font-size: 1.25rem;">$45K</div>
+                <div class="stat-trend stat-trend-up" style="font-size: 0.65rem;">+23%</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Stats</h3>
+                <p class="card-subtitle">Statistics display</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chip -->
+        <div class="card component-card" data-category="data" data-name="chip">
+          <div class="component-preview">
+            <div class="flex flex-wrap gap-2">
+              <div class="chip text-xs">Default</div>
+              <div class="chip chip-primary text-xs">Primary</div>
+              <div class="chip chip-closable text-xs">
+                <span>Close</span>
+                <button class="chip-close">×</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Chip</h3>
+                <p class="card-subtitle">Compact data tags</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--accent))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--accent))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="card component-card" data-category="data" data-name="divider">
+          <div class="component-preview">
+            <div style="max-width: 200px;">
+              <p class="text-xs">Above</p>
+              <div class="divider text-xs">OR</div>
+              <p class="text-xs">Below</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Divider</h3>
+                <p class="card-subtitle">Content separator</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--er))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--er))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast/Notification -->
+        <div class="card component-card" data-category="feedback" data-name="toast">
+          <div class="component-preview">
+            <button class="btn btn-success btn-sm text-xs" onclick="VraithUI.toast.success('Success!')">Show Toast</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Toast</h3>
+                <p class="card-subtitle">Notification popup</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--su))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--su))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drawer -->
+        <div class="card component-card" data-category="overlays" data-name="drawer">
+          <div class="component-preview">
+            <button class="btn btn-secondary btn-sm text-xs">Open Drawer</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Drawer</h3>
+                <p class="card-subtitle">Side panel overlay</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popover -->
+        <div class="card component-card" data-category="overlays" data-name="popover">
+          <div class="component-preview">
+            <button class="btn btn-outline btn-sm text-xs">Popover</button>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Popover</h3>
+                <p class="card-subtitle">Contextual popup</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Picker -->
+        <div class="card component-card" data-category="inputs" data-name="color-picker">
+          <div class="component-preview">
+            <input type="color" class="color-picker" value="#6366f1">
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Color Picker</h3>
+                <p class="card-subtitle">Color selection input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--p))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--p))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="card component-card" data-category="inputs" data-name="date-picker">
+          <div class="component-preview">
+            <input type="text" class="input text-xs" placeholder="Select date" style="max-width: 180px;">
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Date Picker</h3>
+                <p class="card-subtitle">Date selection input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="card component-card" data-category="inputs" data-name="file-upload">
+          <div class="component-preview">
+            <div class="file-upload" style="max-width: 220px;">
+              <input type="file" id="fileDemo" class="file-upload-input">
+              <label for="fileDemo" class="file-upload-label" style="padding: 1rem; font-size: 0.75rem;">
+                <svg class="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <span style="font-size: 0.7rem;">Upload</span>
+              </label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">File Upload</h3>
+                <p class="card-subtitle">File upload input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--accent))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--accent))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="card component-card" data-category="inputs" data-name="rating">
+          <div class="component-preview">
+            <div class="rating">
+              <input type="radio" name="ratingDemo" class="rating-star" />
+              <input type="radio" name="ratingDemo" class="rating-star" />
+              <input type="radio" name="ratingDemo" class="rating-star" checked />
+              <input type="radio" name="ratingDemo" class="rating-star" />
+              <input type="radio" name="ratingDemo" class="rating-star" />
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Rating</h3>
+                <p class="card-subtitle">Star rating input</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--wa))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--wa))]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Group -->
+        <div class="card component-card" data-category="buttons" data-name="button-group">
+          <div class="component-preview">
+            <div class="btn-group">
+              <button class="btn btn-outline btn-sm text-xs">Left</button>
+              <button class="btn btn-primary btn-sm text-xs">Center</button>
+              <button class="btn btn-outline btn-sm text-xs">Right</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Button Group</h3>
+                <p class="card-subtitle">Connected button group</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--s))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--s))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Group -->
+        <div class="card component-card" data-category="forms" data-name="input-group">
+          <div class="component-preview">
+            <div class="input-group" style="max-width: 220px;">
+              <span class="input-group-text text-xs">https://</span>
+              <input type="text" class="input text-xs" placeholder="site.com">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Input Group</h3>
+                <p class="card-subtitle">Input with prefix/suffix</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--er))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--er))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="card component-card" data-category="feedback" data-name="empty-state">
+          <div class="component-preview">
+            <div class="empty-state" style="padding: 1rem;">
+              <svg class="empty-state-icon w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              </svg>
+              <h3 class="empty-state-title text-xs mt-2">No data</h3>
+              <p class="empty-state-description text-xs">Get started</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="card-title">Empty State</h3>
+                <p class="card-subtitle">No content placeholder</p>
+              </div>
+              <div class="category-icon bg-[rgb(var(--in))]/20" style="width: 2.5rem; height: 2.5rem; margin: 0;">
+                <svg class="w-5 h-5 text-[rgb(var(--in))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results Message -->
+      <div id="noResults" class="text-center py-20" style="display: none;">
+        <svg class="w-24 h-24 mx-auto mb-6 text-[rgb(var(--fg))]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="text-2xl font-bold mb-2">No components found</h3>
+        <p class="text-[rgb(var(--fg))]/60">Try adjusting your search or filters</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { VraithUI } from './assets/js/runtime.js';
+
+    // Make VraithUI available globally
+    window.VraithUI = VraithUI;
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      VraithUI.theme.toggle(['dark', 'default', 'cyberpunk', 'luxury']);
+    });
+
+    // Search and filter functionality
+    const searchInput = document.getElementById('searchInput');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const componentCards = document.querySelectorAll('.component-card');
+    const noResults = document.getElementById('noResults');
+
+    let currentFilter = 'all';
+
+    // Filter chips
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentFilter = chip.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    // Search
+    searchInput.addEventListener('input', applyFilters);
+
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      let visibleCount = 0;
+
+      componentCards.forEach(card => {
+        const category = card.dataset.category;
+        const name = card.dataset.name;
+        const matchesFilter = currentFilter === 'all' || category === currentFilter;
+        const matchesSearch = name.toLowerCase().includes(searchTerm) ||
+                             card.querySelector('.card-title').textContent.toLowerCase().includes(searchTerm);
+
+        if (matchesFilter && matchesSearch) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('accordion-item-open');
+      });
+    });
+  </script>
+</body>
+</html>

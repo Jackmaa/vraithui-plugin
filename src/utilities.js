@@ -107,7 +107,11 @@ export default function utilities() {
       "&:hover": {
         boxShadow: "0 0 20px rgb(var(--p) / 0.5)",
       },
+      ".hover\\:text-[rgb(var(--p))]:hover": {
+        color: "rgb(var(--p))",
+      }
     },
+
 
     /* ========== BACKGROUND PATTERNS ========== */
     ".bg-pattern": {

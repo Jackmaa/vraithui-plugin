@@ -18,7 +18,7 @@ export default function dropdownComponent() {
     /* Dropdown menu */
     ".dropdown-menu": {
       position: "absolute",
-      top: "calc(100% + .5rem)",
+      top: "100%",
       left: "0",
       zIndex: "50",
       display: "none",
@@ -34,6 +34,11 @@ export default function dropdownComponent() {
 
     /* Open state */
     '.dropdown[data-open="true"] .dropdown-menu': {
+      display: "block",
+    },
+
+    /* Hover state */
+    ".dropdown:hover > .dropdown-menu": {
       display: "block",
     },
 

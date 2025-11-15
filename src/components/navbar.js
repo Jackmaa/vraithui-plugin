@@ -24,7 +24,9 @@ export default function navbarComponent() {
       alignItems: "center",
       gap: ".5rem",
     },
-    ".navbar-center": { marginLeft: "auto", marginRight: "auto" },
+    ".navbar-start": { flex: "0 0 auto" },
+    ".navbar-center": { flex: "1 1 0%", justifyContent: "center" },
+    ".navbar-end": { flex: "0 0 auto", justifyContent: "flex-end" },
     ".navbar-brand": { fontWeight: "800", letterSpacing: "-0.02em" },
 
     /* Menu burger */

@@ -12,8 +12,8 @@
       min-height: 100vh;
     }
     .admin-sidebar {
-      background: rgb(var(--bg-secondary));
-      border-right: 1px solid rgb(var(--fg) / 0.1);
+      background: rgb(var(--panel));
+      border-right: 1px solid rgb(var(--border));
       position: sticky;
       top: 0;
       height: 100vh;
@@ -28,19 +28,20 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0.75rem 1rem;
-      color: rgb(var(--fg) / 0.7);
+      color: rgb(var(--fg) / 0.85);
       text-decoration: none;
       transition: all 0.2s;
       border-left: 3px solid transparent;
     }
     .sidebar-link:hover {
-      background: rgb(var(--fg) / 0.05);
+      background: rgb(var(--fg) / 0.08);
       color: rgb(var(--fg));
     }
     .sidebar-link.active {
-      background: rgb(var(--p) / 0.1);
+      background: rgb(var(--p) / 0.15);
       color: rgb(var(--p));
       border-left-color: rgb(var(--p));
+      font-weight: 600;
     }
     .data-table {
       width: 100%;
@@ -55,7 +56,7 @@
       padding: 0.75rem 1rem;
       text-align: left;
       font-weight: 600;
-      color: rgb(var(--fg) / 0.8);
+      color: rgb(var(--fg) / 0.85);
     }
     .data-table td {
       padding: 0.75rem 1rem;
@@ -102,17 +103,17 @@
   <div class="admin-layout">
     <!-- Sidebar -->
     <aside class="admin-sidebar">
-      <div style="padding: 1.5rem 1rem; border-bottom: 1px solid rgb(var(--fg) / 0.1);">
+      <div style="padding: 1.5rem 1rem; border-bottom: 1px solid rgb(var(--border));">
         <h1 style="font-size: 1.25rem; font-weight: 700; color: rgb(var(--p));">
           VraithUI Admin
         </h1>
-        <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6); margin-top: 0.25rem;">
+        <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.75); margin-top: 0.25rem;">
           Management Console
         </p>
       </div>
 
       <nav style="padding: 1rem 0;">
-        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.5); text-transform: uppercase; letter-spacing: 0.05em;">
+        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.65); text-transform: uppercase; letter-spacing: 0.05em;">
           Main
         </div>
         <a href="#overview" class="sidebar-link active">
@@ -128,7 +129,7 @@
           Analytics
         </a>
 
-        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1rem;">
+        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.65); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1rem;">
           Management
         </div>
         <a href="#users" class="sidebar-link">
@@ -151,7 +152,7 @@
           Content
         </a>
 
-        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1rem;">
+        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: rgb(var(--fg) / 0.65); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1rem;">
           System
         </div>
         <a href="#settings" class="sidebar-link">
@@ -169,7 +170,7 @@
         </a>
       </nav>
 
-      <div style="padding: 1rem; margin-top: auto; border-top: 1px solid rgb(var(--fg) / 0.1);">
+      <div style="padding: 1rem; margin-top: auto; border-top: 1px solid rgb(var(--border));">
         <div class="dropdown">
           <button class="btn btn-ghost btn-sm" style="width: 100%; justify-content: flex-start; gap: 0.5rem;">
             <div style="width: 2rem; height: 2rem; background: rgb(var(--p) / 0.2); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: rgb(var(--p)); font-weight: 600; font-size: 0.875rem;">
@@ -177,7 +178,7 @@
             </div>
             <div style="text-align: left; flex: 1;">
               <div style="font-weight: 600; font-size: 0.875rem;">Vraith</div>
-              <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">Admin</div>
+              <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.75);">Admin</div>
             </div>
           </button>
         </div>
@@ -187,19 +188,29 @@
     <!-- Main Content -->
     <main class="admin-main">
       <!-- Header -->
-      <header style="background: rgb(var(--bg)); border-bottom: 1px solid rgb(var(--fg) / 0.1); position: sticky; top: 0; z-index: 10; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;">
+      <header style="background: rgb(var(--bg)); border-bottom: 1px solid rgb(var(--border)); position: sticky; top: 0; z-index: 10; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;">
         <div>
           <h2 style="font-size: 1.5rem; font-weight: 700;">User Management</h2>
-          <p style="color: rgb(var(--fg) / 0.6); font-size: 0.875rem; margin-top: 0.25rem;">
+          <p style="color: rgb(var(--fg) / 0.75); font-size: 0.875rem; margin-top: 0.25rem;">
             Manage users, roles, and permissions
           </p>
         </div>
         <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <button id="themeToggle" class="btn btn-ghost btn-icon">
+          <a href="../index.html" class="btn btn-ghost btn-icon" aria-label="Back to Home">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </a>
+          <button id="themeToggle" class="btn btn-ghost btn-icon" aria-label="Toggle theme">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
             </svg>
           </button>
+          <a href="https://github.com/Jackmaa/vraithui-plugin" class="btn btn-ghost btn-icon" aria-label="GitHub">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.430.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
           <div class="dropdown">
             <button class="btn btn-ghost btn-icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -224,7 +235,7 @@
             <div class="card-body">
               <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
-                  <p style="color: rgb(var(--fg) / 0.6); font-size: 0.875rem;">Total Users</p>
+                  <p style="color: rgb(var(--fg) / 0.75); font-size: 0.875rem;">Total Users</p>
                   <h3 style="font-size: 2rem; font-weight: 700; margin-top: 0.5rem;">2,847</h3>
                   <p style="color: rgb(var(--su)); font-size: 0.875rem; margin-top: 0.5rem;">
                     <span style="font-weight: 600;">+12.5%</span> from last month
@@ -243,7 +254,7 @@
             <div class="card-body">
               <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
-                  <p style="color: rgb(var(--fg) / 0.6); font-size: 0.875rem;">Active Now</p>
+                  <p style="color: rgb(var(--fg) / 0.75); font-size: 0.875rem;">Active Now</p>
                   <h3 style="font-size: 2rem; font-weight: 700; margin-top: 0.5rem;">573</h3>
                   <p style="color: rgb(var(--su)); font-size: 0.875rem; margin-top: 0.5rem;">
                     <span style="font-weight: 600;">+8.2%</span> from yesterday
@@ -262,7 +273,7 @@
             <div class="card-body">
               <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
-                  <p style="color: rgb(var(--fg) / 0.6); font-size: 0.875rem;">New Users</p>
+                  <p style="color: rgb(var(--fg) / 0.75); font-size: 0.875rem;">New Users</p>
                   <h3 style="font-size: 2rem; font-weight: 700; margin-top: 0.5rem;">187</h3>
                   <p style="color: rgb(var(--su)); font-size: 0.875rem; margin-top: 0.5rem;">
                     <span style="font-weight: 600;">+23.1%</span> this week
@@ -281,7 +292,7 @@
             <div class="card-body">
               <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
-                  <p style="color: rgb(var(--fg) / 0.6); font-size: 0.875rem;">Banned Users</p>
+                  <p style="color: rgb(var(--fg) / 0.75); font-size: 0.875rem;">Banned Users</p>
                   <h3 style="font-size: 2rem; font-weight: 700; margin-top: 0.5rem;">24</h3>
                   <p style="color: rgb(var(--er)); font-size: 0.875rem; margin-top: 0.5rem;">
                     <span style="font-weight: 600;">+2</span> today
@@ -360,7 +371,7 @@
                       </div>
                       <div>
                         <div style="font-weight: 600;">John Doe</div>
-                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">@johndoe</div>
+                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.7);">@johndoe</div>
                       </div>
                     </div>
                   </td>
@@ -399,7 +410,7 @@
                       </div>
                       <div>
                         <div style="font-weight: 600;">Sarah Miller</div>
-                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">@sarahmiller</div>
+                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.7);">@sarahmiller</div>
                       </div>
                     </div>
                   </td>
@@ -438,7 +449,7 @@
                       </div>
                       <div>
                         <div style="font-weight: 600;">Mike Chen</div>
-                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">@mikechen</div>
+                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.7);">@mikechen</div>
                       </div>
                     </div>
                   </td>
@@ -477,7 +488,7 @@
                       </div>
                       <div>
                         <div style="font-weight: 600;">Emily Johnson</div>
-                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">@emilyj</div>
+                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.7);">@emilyj</div>
                       </div>
                     </div>
                   </td>
@@ -516,7 +527,7 @@
                       </div>
                       <div>
                         <div style="font-weight: 600;">David Brown</div>
-                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.6);">@davidb</div>
+                        <div style="font-size: 0.75rem; color: rgb(var(--fg) / 0.7);">@davidb</div>
                       </div>
                     </div>
                   </td>
@@ -572,10 +583,10 @@
                   </div>
                   <div style="flex: 1;">
                     <p style="font-weight: 600;">New user registered</p>
-                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.6); margin-top: 0.25rem;">
+                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.75); margin-top: 0.25rem;">
                       <span style="font-weight: 600;">Mike Chen</span> created a new account
                     </p>
-                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.5); margin-top: 0.5rem;">2 minutes ago</p>
+                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.65); margin-top: 0.5rem;">2 minutes ago</p>
                   </div>
                 </div>
 
@@ -587,10 +598,10 @@
                   </div>
                   <div style="flex: 1;">
                     <p style="font-weight: 600;">User role updated</p>
-                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.6); margin-top: 0.25rem;">
+                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.75); margin-top: 0.25rem;">
                       <span style="font-weight: 600;">Sarah Miller</span> promoted to Editor
                     </p>
-                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.5); margin-top: 0.5rem;">1 hour ago</p>
+                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.65); margin-top: 0.5rem;">1 hour ago</p>
                   </div>
                 </div>
 
@@ -602,10 +613,10 @@
                   </div>
                   <div style="flex: 1;">
                     <p style="font-weight: 600;">User banned</p>
-                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.6); margin-top: 0.25rem;">
+                    <p style="font-size: 0.875rem; color: rgb(var(--fg) / 0.75); margin-top: 0.25rem;">
                       <span style="font-weight: 600;">David Brown</span> banned for violating terms
                     </p>
-                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.5); margin-top: 0.5rem;">3 hours ago</p>
+                    <p style="font-size: 0.75rem; color: rgb(var(--fg) / 0.65); margin-top: 0.5rem;">3 hours ago</p>
                   </div>
                 </div>
               </div>

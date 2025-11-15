@@ -71,32 +71,53 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header style="background: rgb(var(--bg)); border-bottom: 1px solid rgb(var(--fg) / 0.1); padding: 1.5rem 0; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgb(var(--bg) / 0.8);">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
-      <div style="display: flex; align-items: center; gap: 2rem;">
-        <a href="index.html" style="text-decoration: none;">
-          <h1 style="font-size: 1.5rem; font-weight: 700;">
-            <span style="background: linear-gradient(135deg, rgb(var(--p)), rgb(var(--s))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-              VraithUI
-            </span>
-          </h1>
-        </a>
-        <nav style="display: flex; gap: 1.5rem;">
-          <a href="docs.html" class="link">Docs</a>
-          <a href="themes.html" class="link link-primary" style="font-weight: 600;">Themes</a>
-          <a href="examples/dashboard.html" class="link">Examples</a>
-        </nav>
-      </div>
-      <div style="display: flex; gap: 0.75rem; align-items: center;">
-        <a href="https://github.com/yourname/vraithui" target="_blank" class="btn btn-ghost btn-icon">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-        </a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-sticky navbar-shadow" style="padding-left: 1rem; padding-right: 1rem;">
+    <div class="navbar-start">
+      <a href="index.html" class="navbar-brand" style="font-size: 1.5rem; background: linear-gradient(135deg, rgb(var(--p)), rgb(var(--s))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        VraithUI
+      </a>
+    </div>
+
+    <div class="navbar-center">
+      <div class="navbar-links">
+        <a href="components.html" class="navbar-link">Components</a>
+        <a href="themes.html" class="navbar-link" style="color: rgb(var(--p)); font-weight: 600;">Themes</a>
+        <a href="docs.html" class="navbar-link">Docs</a>
+        <div class="dropdown">
+          <button class="navbar-link" style="background: none; border: none; cursor: pointer;">
+            Examples
+            <svg style="width: 1rem; height: 1rem; display: inline-block; vertical-align: middle; margin-left: 0.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="examples/dashboard.html" class="dropdown-item">Dashboard</a>
+            <a href="examples/admin.html" class="dropdown-item">Admin Panel</a>
+            <a href="examples/landing.html" class="dropdown-item">Landing Page</a>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
+
+    <div class="navbar-end">
+      <a href="index.html" class="btn btn-ghost btn-icon" aria-label="Back to Home">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      </a>
+      <button id="themeToggle" class="btn btn-ghost btn-icon" aria-label="Toggle theme">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+      <a href="https://github.com/Jackmaa/vraithui-plugin" class="btn btn-ghost btn-icon" aria-label="GitHub">
+        <svg style="width: 1.25rem; height: 1.25rem;" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.430.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section style="padding: 4rem 0 2rem; background: linear-gradient(135deg, rgb(var(--p) / 0.1), rgb(var(--s) / 0.1));">
@@ -109,7 +130,7 @@
           </span>
         </h1>
         <p style="font-size: 1.25rem; color: rgb(var(--fg) / 0.7); margin-bottom: 2rem;">
-          16 beautifully crafted themes to match your brand and style. Switch instantly with a single attribute.
+          20 beautifully crafted themes to match your brand and style. Switch instantly with a single attribute.
         </p>
         <div class="alert alert-info" style="display: inline-flex; text-align: left;">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -290,23 +311,34 @@ const currentTheme = VraithUI.theme.get();</code></pre>
   <script type="module">
     import { VraithUI } from './assets/js/runtime.js';
 
+    // Make VraithUI available globally
+    window.VraithUI = VraithUI;
+
+    // All 20 themes from src/themes.js
     const themes = [
-      { name: 'default', title: 'Default', description: 'Clean and minimal default theme', colors: ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'] },
-      { name: 'dark', title: 'Dark', description: 'Sleek dark mode for low-light environments', colors: ['#60a5fa', '#a78bfa', '#34d399', '#fbbf24'] },
-      { name: 'cyberpunk', title: 'Cyberpunk', description: 'Neon-infused futuristic aesthetic', colors: ['#ff00ff', '#00ffff', '#ff6ec7', '#00ff9f'] },
-      { name: 'luxury', title: 'Luxury', description: 'Elegant gold and deep purple palette', colors: ['#9333ea', '#fbbf24', '#7c3aed', '#f59e0b'] },
-      { name: 'forest', title: 'Forest', description: 'Natural greens inspired by nature', colors: ['#10b981', '#059669', '#34d399', '#6ee7b7'] },
-      { name: 'ocean', title: 'Ocean', description: 'Deep blues like the ocean depths', colors: ['#0ea5e9', '#0284c7', '#38bdf8', '#7dd3fc'] },
-      { name: 'sunset', title: 'Sunset', description: 'Warm oranges and purples of dusk', colors: ['#f97316', '#ea580c', '#fb923c', '#fdba74'] },
-      { name: 'cherry', title: 'Cherry', description: 'Bold reds with pink accents', colors: ['#ef4444', '#dc2626', '#f87171', '#fca5a5'] },
-      { name: 'mint', title: 'Mint', description: 'Fresh mint green and teal', colors: ['#14b8a6', '#0d9488', '#2dd4bf', '#5eead4'] },
-      { name: 'lavender', title: 'Lavender', description: 'Soft purple with pink undertones', colors: ['#a855f7', '#9333ea', '#c084fc', '#d8b4fe'] },
-      { name: 'amber', title: 'Amber', description: 'Warm amber and golden tones', colors: ['#f59e0b', '#d97706', '#fbbf24', '#fcd34d'] },
-      { name: 'emerald', title: 'Emerald', description: 'Rich emerald green palette', colors: ['#10b981', '#059669', '#34d399', '#6ee7b7'] },
-      { name: 'rose', title: 'Rose', description: 'Romantic rose and pink shades', colors: ['#f43f5e', '#e11d48', '#fb7185', '#fda4af'] },
-      { name: 'slate', title: 'Slate', description: 'Professional gray and blue-gray', colors: ['#64748b', '#475569', '#94a3b8', '#cbd5e1'] },
-      { name: 'brand', title: 'Brand', description: 'VraithUI signature brand colors', colors: ['#6366f1', '#8b5cf6', '#818cf8', '#a78bfa'] },
-      { name: 'retro', title: 'Retro', description: 'Vintage browns and warm tones', colors: ['#d97706', '#92400e', '#f59e0b', '#fbbf24'] }
+      // Base themes
+      { name: 'default', title: 'Default', description: 'Clean and minimal default theme', colors: ['rgb(34, 197, 94)', 'rgb(59, 130, 246)', 'rgb(34, 197, 94)', 'rgb(234, 179, 8)'] },
+      { name: 'dark', title: 'Dark', description: 'Sleek dark mode for low-light environments', colors: ['rgb(99, 102, 241)', 'rgb(20, 184, 166)', 'rgb(96, 165, 250)', 'rgb(34, 197, 94)'] },
+      { name: 'brand', title: 'Brand', description: 'VraithUI signature brand colors (orange & sky)', colors: ['rgb(234, 88, 12)', 'rgb(14, 165, 233)', 'rgb(34, 197, 94)', 'rgb(245, 158, 11)'] },
+      { name: 'brand-dark', title: 'Brand Dark', description: 'Dark version of brand theme', colors: ['rgb(234, 88, 12)', 'rgb(14, 165, 233)', 'rgb(56, 189, 248)', 'rgb(251, 191, 36)'] },
+      { name: 'luxury', title: 'Luxury', description: 'Elegant gold and amber tones on dark', colors: ['rgb(202, 138, 4)', 'rgb(217, 119, 6)', 'rgb(253, 154, 0)', 'rgb(251, 191, 36)'] },
+      { name: 'cyberpunk', title: 'Cyberpunk', description: 'Neon fuchsia and cyan futuristic aesthetic', colors: ['rgb(236, 72, 153)', 'rgb(34, 211, 238)', 'rgb(0, 255, 255)', 'rgb(132, 204, 22)'] },
+      { name: 'pastel', title: 'Pastel', description: 'Soft dreamy fuchsia and blue', colors: ['rgb(236, 72, 153)', 'rgb(96, 165, 250)', 'rgb(74, 222, 128)', 'rgb(253, 224, 71)'] },
+      { name: 'neutral', title: 'Neutral', description: 'Professional grayscale palette', colors: ['rgb(64, 64, 64)', 'rgb(115, 115, 115)', 'rgb(82, 82, 82)', 'rgb(59, 130, 246)'] },
+
+      // Elegant/Vintage themes
+      { name: 'velvet-charcoal', title: 'Velvet Charcoal', description: 'Charcoal gray with golden cream accents', colors: ['rgb(245, 222, 179)', 'rgb(54, 69, 79)', 'rgb(125, 211, 252)', 'rgb(134, 239, 172)'] },
+      { name: 'persian-plum', title: 'Persian Plum', description: 'Deep plum with ivory quartz highlights', colors: ['rgb(240, 173, 214)', 'rgb(112, 28, 28)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'bordeaux-silk', title: 'Bordeaux Silk', description: 'Rich bordeaux with silver dust', colors: ['rgb(196, 195, 208)', 'rgb(80, 34, 45)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'regal-gold', title: 'Regal Gold', description: 'Gold on onyx - regal and luxurious', colors: ['rgb(255, 215, 0)', 'rgb(53, 56, 57)', 'rgb(96, 165, 250)', 'rgb(132, 204, 22)'] },
+      { name: 'velvet-indigo', title: 'Velvet Indigo', description: 'Deep indigo with platinum accents', colors: ['rgb(229, 228, 226)', 'rgb(75, 0, 130)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'deep-jungle', title: 'Deep Jungle', description: 'Forest green with light olive', colors: ['rgb(206, 212, 106)', 'rgb(7, 85, 59)', 'rgb(125, 211, 252)', 'rgb(134, 239, 172)'] },
+      { name: 'crimson-peach', title: 'Crimson Peach', description: 'Vibrant crimson with soft peach', colors: ['rgb(255, 223, 185)', 'rgb(164, 25, 61)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'imperial-blue', title: 'Imperial Blue', description: 'Royal blue with vintage rose', colors: ['rgb(192, 8, 129)', 'rgb(0, 35, 102)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'oxford-maize', title: 'Oxford Maize', description: 'Oxford blue with maize yellow', colors: ['rgb(245, 208, 66)', 'rgb(10, 23, 78)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] },
+      { name: 'rich-black', title: 'Rich Black', description: 'Deep black with vivid yellow', colors: ['rgb(254, 231, 21)', 'rgb(16, 24, 32)', 'rgb(96, 165, 250)', 'rgb(132, 204, 22)'] },
+      { name: 'mystic-jade', title: 'Mystic Jade', description: 'Jade green with pale violet', colors: ['rgb(126, 124, 206)', 'rgb(119, 168, 168)', 'rgb(147, 197, 253)', 'rgb(74, 222, 128)'] },
+      { name: 'lush-merlot', title: 'Lush Merlot', description: 'Merlot red with gold accents', colors: ['rgb(197, 168, 128)', 'rgb(115, 0, 0)', 'rgb(147, 197, 253)', 'rgb(134, 239, 172)'] }
     ];
 
     const currentTheme = VraithUI.theme.get();
@@ -358,6 +390,20 @@ const currentTheme = VraithUI.theme.get();</code></pre>
         // Show toast
         VraithUI.toast.success(`Switched to ${themeName} theme`);
       });
+    });
+
+    // Theme toggle functionality
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const currentTheme = VraithUI.theme.get();
+      const newTheme = currentTheme === 'dark' ? 'default' : 'dark';
+      VraithUI.theme.set(newTheme);
+
+      // Update active states
+      document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
+      const activeCard = document.querySelector(`.theme-card[data-theme-name="${newTheme}"]`);
+      if (activeCard) {
+        activeCard.classList.add('active');
+      }
     });
   </script>
 </body>
